@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: demo-app-rules
+  namespace: monitoring
+spec:
+  groups:
+  - name: self-healing.rules
+    rules:
+    - alert: HighMemoryUsage
+      expr: vector(1)
+      for: 0s
+      labels:
+        severity: critical
+        deployment: demo-app
+        namespace: default
+      annotations:
+        summary: "High memory usage detected on demo-app, triggering self-heal."

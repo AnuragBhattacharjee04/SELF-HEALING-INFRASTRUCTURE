@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: webhook-receiver-config
+  namespace: monitoring
+spec:
+  route:
+    receiver: 'remediation-webhook'
+    groupBy: ['alertname']
+  receivers:
+  - name: 'remediation-webhook'
+    webhookConfigs:
+    - url: 'http://remediation-service.monitoring.svc:8080/heal'
+      sendResolved: true

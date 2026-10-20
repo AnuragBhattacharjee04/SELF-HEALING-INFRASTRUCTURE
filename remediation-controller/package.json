@@ -1,0 +1,13 @@
+{
+  "name": "remediation-controller",
+  "version": "1.0.0",
+  "description": "Event-driven self-healing controller for Kubernetes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@kubernetes/client-node": "^0.10.3",
+    "express": "^4.19.2"
+  }
+}
